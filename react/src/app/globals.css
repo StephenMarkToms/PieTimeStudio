@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "./tavern.css";
+
+/*
+  Tavern palette and type, available as Tailwind utilities
+  (bg-ink, text-gold, font-head, …) alongside the ornamental skin in tavern.css.
+*/
+@theme {
+  --color-ink: #1a130c;
+  --color-bg: #14100f;
+  --color-bg-alt: #1c1613;
+  --color-surface: #241c18;
+  --color-panel: #2e2420;
+  --color-line: #382c25;
+  --color-parchment: #f3ece2;
+  --color-muted: #b8ab9c;
+  --color-gold: #d4af37;
+  --color-gold-hi: #ecc95a;
+  --color-gold-dim: #a8862a;
+  --color-mint: #6fb98f;
+  --color-ember: #e0674f;
+  --font-display: var(--font-cinzel-decorative), "Cinzel Decorative", Georgia, serif;
+  --font-head: var(--font-cinzel), "Cinzel", Georgia, serif;
+  --font-body: var(--font-garamond), "EB Garamond", Georgia, serif;
+  --radius-tavern: 4px;
+}
+
+:root {
+  --font-display: var(--font-cinzel-decorative), "Cinzel Decorative", Georgia, serif;
+  --font-head: var(--font-cinzel), "Cinzel", Georgia, serif;
+  --font-body: var(--font-garamond), "EB Garamond", Georgia, serif;
+}
