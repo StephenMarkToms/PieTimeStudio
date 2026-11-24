@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -101,8 +102,8 @@ export function GamesScroller() {
         </svg>
       </button>
       <div className="games-scroll" ref={trackRef}>
-        {FEATURED.map((game) => (
-          <Link href="/games" className="mini-game-card" key={game.title}>
+        {FEATURED.map((game, index) => (
+          <Link href="/games" className="mini-game-card" key={game.title} style={{ "--ink": index } as CSSProperties}>
             <div className={`mini-thumb${game.cover ? " has-cover" : ""}`}>
               {game.cover ? (
                 <img src={game.cover} alt={game.alt ?? ""} width={1600} height={900} />

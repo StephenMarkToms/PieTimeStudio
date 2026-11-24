@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GamesInteractions } from "@/components/GamesInteractions";
+import { InkText } from "@/components/InkText";
 import { seedBagArt } from "@/components/seedBagArt";
 import { sproutArt } from "@/components/sproutArt";
 
@@ -83,7 +84,7 @@ export default function GamesPage() {
       <GamesInteractions />
       <section className="page-hero">
         <span className="eyebrow">Games</span>
-        <h1>What we&apos;re making</h1>
+        <InkText as="h1">What we&apos;re making</InkText>
         <p className="lede">
           Everything here is free to download, free to keep, and yours once you
           have it. No accounts, no ads, no in-game purchases — ever.
@@ -95,7 +96,7 @@ export default function GamesPage() {
           <div className="seed-bag-heading">
             <span className="seed-bag-icon" dangerouslySetInnerHTML={{ __html: sproutArt }} />
             <div>
-              <h2>The Seed Bag</h2>
+              <InkText as="h2" base={40}>The Seed Bag</InkText>
               <p id="seedBagNote">Plant a seed on the games you like. The more seeds a game gets, the more its vines grow.</p>
             </div>
           </div>
@@ -148,7 +149,7 @@ export default function GamesPage() {
       </section>
 
       <section className="cta-band">
-        <h2>Want to help us make more of these?</h2>
+        <InkText as="h2" base={40}>Want to help us make more of these?</InkText>
         <p>Every game on this page stays free because people choose to support the studio directly.</p>
         <Link href="/support" className="btn btn-primary">Support the Studio</Link>
       </section>

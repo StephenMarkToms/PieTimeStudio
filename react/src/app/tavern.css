@@ -1372,19 +1372,12 @@ a.card-link:hover p { color: var(--accent); }
   .nav { padding-left: 34px; padding-right: 34px; }
 }
 
-/* ---------- Page transitions: slide left/right like turning to the next page ---------- */
-/* Page order (see the inline script in each page's <head>):
-   Home → Our Mission → Games → Support Us → Contact.
-   Going right in that order adds html.nav-fwd, going left adds html.nav-back. */
+/* ---------- Page transitions: a soft fade, same in either direction ---------- */
 
 html { background: var(--bg); }
 body { overflow-x: clip; }
 
-@keyframes slide-out-left  { from { transform: translateX(0); }     to { transform: translateX(-100%); } }
-@keyframes slide-out-right { from { transform: translateX(0); }     to { transform: translateX(100%); } }
-@keyframes slide-in-right  { from { transform: translateX(100%); }  to { transform: translateX(0); } }
-@keyframes slide-in-left   { from { transform: translateX(-100%); } to { transform: translateX(0); } }
-@keyframes page-in  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes page-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes page-out { from { opacity: 1; } to { opacity: 0; } }
 
 /* 1) Browsers with cross-page View Transitions (Chrome/Edge/Safari on the live site):
@@ -1402,21 +1395,14 @@ body { overflow-x: clip; }
   animation-timing-function: cubic-bezier(.65, 0, .35, 1);
   animation-fill-mode: both;
 }
-::view-transition-old(root) { animation-name: page-out; animation-duration: .25s; }
-::view-transition-new(root) { animation-name: page-in; animation-duration: .45s; }
-html.nav-fwd::view-transition-old(root)  { animation-name: slide-out-left;  animation-duration: .4s; }
-html.nav-fwd::view-transition-new(root)  { animation-name: slide-in-right;  animation-duration: .4s; }
-html.nav-back::view-transition-old(root) { animation-name: slide-out-right; animation-duration: .4s; }
-html.nav-back::view-transition-new(root) { animation-name: slide-in-left;   animation-duration: .4s; }
+::view-transition-old(root) { animation-name: page-out; animation-duration: .28s; }
+::view-transition-new(root) { animation-name: page-fade; animation-duration: .45s; }
 
-/* 2) Everyone else (Firefox, local files): the page slides out, the next one slides in.
-      :where() keeps the arrival rules weak so the leaving animation below wins. */
-:where(html:not(.vt):not(.nav-fwd):not(.nav-back)) main { animation: page-in .5s cubic-bezier(.2,.7,.3,1) both; }
-:where(html:not(.vt).nav-fwd) main  { animation: slide-in-right .32s cubic-bezier(.2,.75,.3,1) both; }
-:where(html:not(.vt).nav-back) main { animation: slide-in-left .32s cubic-bezier(.2,.75,.3,1) both; }
-body.leaving-fwd main  { animation: slide-out-left .2s cubic-bezier(.55,0,.8,.3) both; }
-body.leaving-back main { animation: slide-out-right .2s cubic-bezier(.55,0,.8,.3) both; }
-body.leaving-fade main { animation: page-out .2s ease both; }
+/* 2) Browsers without cross-page view transitions. */
+:where(html:not(.vt)) main { animation: page-fade .5s ease both; }
+body.leaving-fwd main,
+body.leaving-back main,
+body.leaving-fade main { animation: page-out .22s ease both; }
 
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
@@ -2398,7 +2384,197 @@ body.seed-holding .game-card:hover { border-color: var(--leaf); box-shadow: 0 0 
 /* Round 4: moss on one corner stone of the seed bag bar */
 .seed-bag-bar::after { background-image: var(--brick-tl), var(--brick-tr), var(--brick-bl), var(--brick-br-moss); }
 
-/* Next.js client navigations remount this wrapper, so the page slide replays. */
-.page-stage { animation: page-in .5s cubic-bezier(.2,.7,.3,1) both; }
-html.nav-fwd .page-stage { animation: slide-in-right .32s cubic-bezier(.2,.75,.3,1) both; }
-html.nav-back .page-stage { animation: slide-in-left .32s cubic-bezier(.2,.75,.3,1) both; }
+/* Next.js client navigations remount this wrapper, so the fade replays. */
+.page-stage { animation: page-fade .5s ease both; }
+
+/* Titles write themselves on, one word at a time.
+   Copy under them rises once it is on screen. */
+
+@keyframes ink-word {
+  from {
+    opacity: 0;
+    transform: translateY(0.55em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ink-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.7rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ink-word {
+  display: inline-block;
+}
+
+.hero .ink-word,
+.page-hero .ink-word {
+  animation: ink-word 0.7s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+  animation-delay: calc(var(--ink-base, 80ms) + var(--ink, 0) * 70ms);
+}
+
+.hero .eyebrow,
+.page-hero .eyebrow {
+  animation: ink-rise 0.55s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+.hero .lede {
+  animation: ink-rise 0.8s cubic-bezier(0.2, 0.75, 0.3, 1) 0.55s both;
+}
+
+.page-hero .lede {
+  animation: ink-rise 0.8s cubic-bezier(0.2, 0.75, 0.3, 1) 0.9s both;
+}
+
+.hero-actions,
+.hero-link {
+  animation: ink-rise 0.7s cubic-bezier(0.2, 0.75, 0.3, 1) 0.85s both;
+}
+
+/* The home title is a parchment gradient. Clip it per word so the
+   stagger does not punch a hole through the heading. */
+.hero h1.ink-words {
+  background: none;
+  color: var(--parchment, #f3ece2);
+}
+
+.hero h1.ink-words .ink-word {
+  background-image: linear-gradient(180deg, #fffaf0 0%, var(--parchment, #f3ece2) 60%, #c9b08a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-hero h1.ink-words::after {
+  animation: ink-rise 0.55s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+  animation-delay: calc(var(--ink-count, 4) * 70ms + 180ms);
+}
+
+.section-head .ink-word,
+.cta-band .ink-word,
+.seed-bag-heading .ink-word,
+.section-head > .eyebrow,
+.section-head > p,
+.cta-band > p,
+.seed-bag-heading p,
+.section-head h2.ink-words::after,
+.cta-band h2.ink-words::after,
+.manifesto blockquote,
+.manifesto cite,
+.card > h3,
+.card > p,
+.pledge-item > h3,
+.pledge-item > p,
+.tier > h3,
+.tier > .amount,
+.game-card .body > h3,
+.game-card .body > p,
+.mini-body > h3,
+.mini-body > p,
+.patreon-card-title,
+.patreon-card-sub,
+.compare {
+  opacity: 0;
+}
+
+.section-head.is-in .ink-word,
+.cta-band.is-in .ink-word,
+.seed-bag-heading.is-in .ink-word {
+  animation: ink-word 0.62s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+  animation-delay: calc(var(--ink, 0) * 55ms + 60ms);
+}
+
+.section-head.is-in > .eyebrow,
+.seed-bag-heading.is-in p,
+.cta-band.is-in > p,
+.section-head.is-in > p,
+.section-head.is-in h2.ink-words::after,
+.cta-band.is-in h2.ink-words::after,
+.manifesto.is-in blockquote,
+.manifesto.is-in cite,
+.card.is-in > h3,
+.card.is-in > p,
+.pledge-item.is-in > h3,
+.pledge-item.is-in > p,
+.tier.is-in > h3,
+.tier.is-in > .amount,
+.game-card.is-in .body > h3,
+.game-card.is-in .body > p,
+.mini-game-card.is-in .mini-body > h3,
+.mini-game-card.is-in .mini-body > p,
+.patreon-card.is-in .patreon-card-title,
+.patreon-card.is-in .patreon-card-sub,
+.compare.is-in {
+  animation: ink-rise 0.7s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+.section-head.is-in > p,
+.cta-band.is-in > p,
+.seed-bag-heading.is-in p,
+.card.is-in > p,
+.pledge-item.is-in > p,
+.game-card.is-in .body > p,
+.mini-game-card.is-in .mini-body > p,
+.patreon-card.is-in .patreon-card-sub,
+.manifesto.is-in cite,
+.tier.is-in > .amount {
+  animation-delay: 0.14s;
+}
+
+.section-head.is-in h2.ink-words::after,
+.cta-band.is-in h2.ink-words::after {
+  animation-delay: calc(var(--ink-count, 3) * 55ms + 120ms);
+}
+
+.mini-game-card.is-in .mini-body > h3 {
+  animation-delay: calc(var(--ink, 0) * 70ms);
+}
+
+.mini-game-card.is-in .mini-body > p {
+  animation-delay: calc(var(--ink, 0) * 70ms + 0.12s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-word,
+  .hero .eyebrow,
+  .page-hero .eyebrow,
+  .hero .lede,
+  .page-hero .lede,
+  .hero-actions,
+  .hero-link,
+  .page-hero h1.ink-words::after,
+  .section-head > .eyebrow,
+  .section-head > p,
+  .cta-band > p,
+  .seed-bag-heading p,
+  .section-head h2.ink-words::after,
+  .cta-band h2.ink-words::after,
+  .manifesto blockquote,
+  .manifesto cite,
+  .card > h3,
+  .card > p,
+  .pledge-item > h3,
+  .pledge-item > p,
+  .tier > h3,
+  .tier > .amount,
+  .game-card .body > h3,
+  .game-card .body > p,
+  .mini-body > h3,
+  .mini-body > p,
+  .patreon-card-title,
+  .patreon-card-sub,
+  .compare {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

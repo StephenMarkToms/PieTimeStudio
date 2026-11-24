@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { InkText } from "@/components/InkText";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,7 +11,7 @@ export default function ContactPage() {
     <>
       <section className="page-hero">
         <span className="eyebrow">Contact</span>
-        <h1>Say hello</h1>
+        <InkText as="h1">Say hello</InkText>
         <p className="lede">
           Questions, feedback, or just want to say the mission resonates with you?
           Reach out — we mean it.
