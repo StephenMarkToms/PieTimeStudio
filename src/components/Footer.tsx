@@ -13,7 +13,7 @@ export function Footer() {
           <Link href="/" className="brand">
             <span className="brand-mark" aria-hidden="true" /> Pie Time Studio
           </Link>
-          <p>Free games. No ads. No pay-to-win. No money-grab skins. Just games you actually own, made possible by the people who play them.</p>
+          <p>No pay-to-win. No money-grab skins. Just games you actually own, made possible by the people who play them.</p>
         </div>
         <div className="footer-links">
           <div>
@@ -34,8 +34,8 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>&copy; <Year /> Pie Time Studio. All games released under our free-and-yours promise.</span>
-        <span>Made with 🥧, not ads.</span>
+        <span>&copy; <Year /> Pie Time Studio. All games released under our ownership promise.</span>
+        <span>Made with 🥧.</span>
       </div>
       <Hoard />
     </footer>

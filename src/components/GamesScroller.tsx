@@ -8,7 +8,6 @@ type Featured = {
   title: string;
   blurb: string;
   tag: string;
-  free?: boolean;
   cover?: string;
   alt?: string;
 };
@@ -18,13 +17,11 @@ const FEATURED: Featured[] = [
     title: "The Right Way",
     blurb: "A pixel-art roguelite RPG with procedural dungeons and deep character builds.",
     tag: "In development",
-    free: true,
   },
   {
     title: "DODO-Doku",
     blurb: "A logic puzzle blending Sudoku's reasoning with Minesweeper's deduction.",
     tag: "Open Beta",
-    free: true,
     cover: "/images/dododoku-cover.jpg",
     alt: "DoDo-Doku cover art: three dodos above the game title",
   },
@@ -114,7 +111,7 @@ export function GamesScroller() {
             <div className="mini-body">
               <h3>{game.title}</h3>
               <p>{game.blurb}</p>
-              <span className={`tag${game.free ? " free" : ""}`}>{game.tag}</span>
+              <span className="tag">{game.tag}</span>
             </div>
           </Link>
         ))}

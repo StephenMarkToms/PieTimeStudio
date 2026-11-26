@@ -7,7 +7,7 @@ import { sproutArt } from "@/components/sproutArt";
 
 export const metadata: Metadata = {
   title: "Games",
-  description: "Free games from Pie Time Studio. No ads, no pay-to-win, no catches — download and keep.",
+  description: "Games from Pie Time Studio. No pay-to-win, no catches — download and keep.",
 };
 
 type Game = {
@@ -16,7 +16,6 @@ type Game = {
   text: string;
   status: string;
   tags: string[];
-  free?: boolean;
   href?: string;
   cover?: string;
   alt?: string;
@@ -29,7 +28,6 @@ const GAMES: Game[] = [
     text: "A pixel-art top-down roguelite RPG combining a handcrafted overworld with ever-shifting procedural dungeons. Master deep character builds, conquer dynamic boss encounters, and forge your own path.",
     status: "In development",
     tags: ["PC"],
-    free: true,
   },
   {
     id: "dodo-doku",
@@ -37,7 +35,6 @@ const GAMES: Game[] = [
     text: "Looking for a game that soothes the soul but keeps your brain spinning? Welcome to DoDo Doku — a pure logic puzzle game that flawlessly blends the rigorous reasoning of Sudoku with the satisfying deduction of Minesweeper!",
     status: "Open-Beta",
     tags: ["PC", "Mobile"],
-    free: true,
     href: "https://pietimestudio.itch.io/dododoku",
     cover: "/images/dododoku-cover.jpg",
     alt: "DoDo-Doku cover art: three dodos above the game title",
@@ -86,8 +83,7 @@ export default function GamesPage() {
         <span className="eyebrow">Games</span>
         <InkText as="h1">What we&apos;re making</InkText>
         <p className="lede">
-          Everything here is free to download, free to keep, and yours once you
-          have it. No accounts, no ads, no in-game purchases — ever.
+          Everything here is yours once you have it. No accounts, no in-game purchases — ever.
         </p>
       </section>
 
@@ -131,7 +127,6 @@ export default function GamesPage() {
                 <h3>{game.title}</h3>
                 <p>{game.text}</p>
                 <div className="tags">
-                  {game.free ? <span className="tag free">Free forever</span> : null}
                   {game.tags.map((tag) => (
                     <span className="tag" key={tag}>{tag}</span>
                   ))}
@@ -150,7 +145,7 @@ export default function GamesPage() {
 
       <section className="cta-band">
         <InkText as="h2" base={40}>Want to help us make more of these?</InkText>
-        <p>Every game on this page stays free because people choose to support the studio directly.</p>
+        <p>Every game on this page exists because people choose to support the studio directly.</p>
         <Link href="/support" className="btn btn-primary">Support the Studio</Link>
       </section>
     </>

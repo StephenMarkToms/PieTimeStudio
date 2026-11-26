@@ -27,7 +27,7 @@ const garamond = EB_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://pietimestudio.com"),
   title: {
-    default: "Pie Time Studio — Free Games. No Ads. No Catches. You Own It.",
+    default: "Pie Time Studio — Games you actually own.",
     template: "%s — Pie Time Studio",
   },
   description:

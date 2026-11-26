@@ -4,7 +4,7 @@ import { InkText } from "@/components/InkText";
 
 export const metadata: Metadata = {
   title: "Support Us",
-  description: "Pie Time Studio runs entirely on donations. Here's how to support free, ad-free, pay-to-win-free games.",
+  description: "Pie Time Studio runs entirely on donations. Here's how to support games with no pay-to-win.",
 };
 
 export default function SupportPage() {
@@ -12,10 +12,10 @@ export default function SupportPage() {
     <>
       <section className="page-hero">
         <span className="eyebrow">Support Us</span>
-        <InkText as="h1">No sales. No ads. Just you, if you want to.</InkText>
+        <InkText as="h1">No sales. Just you, if you want to.</InkText>
         <p className="lede">
-          Pie Time Studio doesn&apos;t make money from the games themselves — they&apos;re
-          free, always. Everything we build is funded by people who decide it&apos;s
+          Pie Time Studio doesn&apos;t make money from the games themselves.
+          Everything we build is funded by people who decide it&apos;s
           worth supporting directly. That&apos;s the whole model.
         </p>
       </section>
@@ -27,7 +27,7 @@ export default function SupportPage() {
             <InkText as="h2" base={40}>What your support actually funds</InkText>
             <p>
               Not a purchase, not a &quot;supporter pack&quot; with bonus content locked
-              behind it. Just the studio&apos;s ability to keep making free games —
+              behind it. Just the studio&apos;s ability to keep making games —
               time, tools, and the occasional coffee.
             </p>
           </div>

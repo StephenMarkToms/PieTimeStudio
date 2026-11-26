@@ -5,21 +5,20 @@ import { InkText } from "@/components/InkText";
 export const metadata: Metadata = {
   title: "Our Mission",
   description:
-    "Why Pie Time Studio exists: free games, no ads, no pay-to-win, and real ownership — funded entirely by donations.",
+    "Why Pie Time Studio exists: no pay-to-win, and real ownership — funded entirely by donations.",
 };
 
 const COMPARE = [
-  ["Price to play", "$0–$70, or \"free\" with ads/IAP", "Always $0"],
-  ["Ads or attention-selling", "Common", "Never"],
+  ["Price to play", "$0–$70, or with in-app purchases", "Always $0"],
   ["Pay-to-win / paid skins", "Common", "Never"],
   ["Can the company revoke your copy?", "Often, yes", "No — it's a file you own"],
   ["Can you share it with a friend?", "Usually against the rules", "Go for it"],
-  ["How the studio gets paid", "Sales, ads, microtransactions", "Voluntary donations only"],
+  ["How the studio gets paid", "Sales and microtransactions", "Voluntary donations only"],
 ];
 
 const PROOFS = [
-  { icon: "rpg-d20", title: "Zero-cost games, real ownership", text: "Every game we release is free to download and free to keep. No account required to keep playing, no online check-in, no rug-pull. Download it once, and it's yours — offline, shareable, permanent." },
-  { icon: "rpg-nopurse", title: "No monetization tricks", text: "No ads. No pay-to-win mechanics. No cosmetic money grabs disguised as \"extra content.\" If it ships in the game, it ships for everyone, free, no exceptions." },
+  { icon: "rpg-d20", title: "Zero-cost games, real ownership", text: "Every game we release is yours to download and yours to keep. No account required to keep playing, no online check-in, no rug-pull. Download it once, and it's yours — offline, shareable, permanent." },
+  { icon: "rpg-nopurse", title: "No monetization tricks", text: "No pay-to-win mechanics. No cosmetic money grabs disguised as \"extra content.\" If it ships in the game, it ships for everyone, no exceptions." },
   { icon: "rpg-potion", title: "Funded by patronage, not players' wallets", text: "We're betting that a large enough audience will choose to support honest games directly — through donations — rather than be squeezed for every purchase along the way." },
   { icon: "rpg-campfire", title: "Built in the open, with our community", text: "We want the people who support us to feel like part of the studio, not customers being upsold. That means transparency about what we're making and how support is used." },
 ];
@@ -31,7 +30,7 @@ export default function AboutPage() {
         <span className="eyebrow">Our Mission</span>
         <InkText as="h1">We think games shouldn&apos;t cost you anything but your time.</InkText>
         <p className="lede">
-          Not your money at the door. Not your attention to ads. Not your wallet to
+          Not your money at the door. Not your wallet to
           &quot;skip the grind.&quot; And not your ownership, handed over to a launcher that
           can revoke it whenever it wants.
         </p>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const PLEDGES = [
   { icon: "rpg-coin", title: "$0 to play", text: "Every game, no purchase, no subscription, no paywall." },
-  { icon: "rpg-noads", title: "No ads, ever", text: "Your attention isn't for sale. Not to us, not to anyone." },
+  { icon: "rpg-d20", title: "No accounts", text: "No sign-in required to keep playing." },
   { icon: "rpg-scales", title: "No pay-to-win", text: "No microtransactions, no loot boxes, no money-grab skins." },
   { icon: "rpg-chest", title: "You own it", text: "Download it, keep it offline, share it. It's yours." },
 ];
@@ -26,9 +26,9 @@ export default function HomePage() {
     <>
       <section className="hero">
         <span className="eyebrow">A different kind of game studio, Redefining digital ownership</span>
-        <InkText as="h1">Free games. Truly yours. Forever.</InkText>
+        <InkText as="h1">Games you actually own.</InkText>
         <p className="lede">
-          We are committed to making games with zero cost to play, zero ads, zero pay-to-win,
+          We are committed to making games with zero cost to play, zero pay-to-win,
           and zero shady monetization. Download them, keep them, share them — they&apos;re
           yours the moment you have them. We&apos;re funded entirely by people who believe
           that&apos;s worth supporting.
@@ -45,7 +45,7 @@ export default function HomePage() {
           <div className="section-head">
             <span className="eyebrow">Featured Games</span>
             <InkText as="h2" base={40}>What we&apos;re making</InkText>
-            <p>Free to download, free to keep, yours once you have it. Scroll through, or see everything.</p>
+            <p>Yours once you have it. Scroll through, or see everything.</p>
           </div>
           <div className="pledge-grid">
             {PLEDGES.map((item) => (
@@ -90,7 +90,7 @@ export default function HomePage() {
             <span className="eyebrow">How we survive</span>
             <InkText as="h2" base={40}>We run entirely on donations</InkText>
             <p>
-              No investors, no ad networks, no store cuts baked into a price tag.
+              No investors, no store cuts baked into a price tag.
               Just people who play our games and decide it&apos;s worth chipping in.
               If that sounds impossible — that&apos;s kind of the point.
             </p>
