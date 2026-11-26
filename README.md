@@ -1,6 +1,6 @@
 # Pie Time Studio
 
-The studio site, rebuilt as a Next.js app with React and Tailwind. The original static pages are still in the project root. Vercel deploys this repository from the root as a Next.js app (`vercel.json`) on Node.js 22. Connect [StephenMarkToms/PieTimeStudio](https://github.com/StephenMarkToms/PieTimeStudio) and deploy; no root-directory override is required. The old `.html` URLs redirect to the App Router routes.
+The studio site, built as a Next.js app with React and Tailwind. Vercel deploys this repository from the root as a Next.js app (`vercel.json`) on Node.js 22. Connect [StephenMarkToms/PieTimeStudio](https://github.com/StephenMarkToms/PieTimeStudio) and deploy; no root-directory override is required. The old `.html` URLs redirect to the App Router routes.
 
 ```bash
 npm install
