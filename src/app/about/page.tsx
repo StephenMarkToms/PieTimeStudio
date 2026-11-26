@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InkText } from "@/components/InkText";
 
 export const metadata: Metadata = {
   title: "Our Mission",
@@ -28,7 +29,7 @@ export default function AboutPage() {
     <>
       <section className="page-hero">
         <span className="eyebrow">Our Mission</span>
-        <h1>We think games shouldn&apos;t cost you anything but your time.</h1>
+        <InkText as="h1">We think games shouldn&apos;t cost you anything but your time.</InkText>
         <p className="lede">
           Not your money at the door. Not your attention to ads. Not your wallet to
           &quot;skip the grind.&quot; And not your ownership, handed over to a launcher that
@@ -50,7 +51,7 @@ export default function AboutPage() {
         <div className="panel-box">
           <div className="section-head">
             <span className="eyebrow">The Problem</span>
-            <h2>Digital ownership is broken</h2>
+            <InkText as="h2" base={40}>Digital ownership is broken</InkText>
             <p>
               Buy a game today and, more often than not, you haven&apos;t bought a game —
               you&apos;ve bought permission to access one, for as long as a company decides
@@ -84,7 +85,7 @@ export default function AboutPage() {
       <section className="block">
         <div className="section-head">
           <span className="eyebrow">The Idea</span>
-          <h2>What we&apos;re actually trying to prove</h2>
+          <InkText as="h2" base={40}>What we&apos;re actually trying to prove</InkText>
         </div>
         <div className="grid grid-2">
           {PROOFS.map((item) => (
@@ -98,7 +99,7 @@ export default function AboutPage() {
       </section>
 
       <section className="cta-band">
-        <h2>This only works if it&apos;s shared.</h2>
+        <InkText as="h2" base={40}>This only works if it&apos;s shared.</InkText>
         <p>
           If you believe games can be made this way, the best thing you can do
           is tell someone else — and if you&apos;re able, chip in.

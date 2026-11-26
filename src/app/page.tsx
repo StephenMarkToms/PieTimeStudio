@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GamesScroller } from "@/components/GamesScroller";
+import { InkText } from "@/components/InkText";
 
 export const metadata: Metadata = {
   description:
@@ -25,7 +26,7 @@ export default function HomePage() {
     <>
       <section className="hero">
         <span className="eyebrow">A different kind of game studio, Redefining digital ownership</span>
-        <h1>Free games. Truly yours. Forever.</h1>
+        <InkText as="h1">Free games. Truly yours. Forever.</InkText>
         <p className="lede">
           We are committed to making games with zero cost to play, zero ads, zero pay-to-win,
           and zero shady monetization. Download them, keep them, share them — they&apos;re
@@ -43,7 +44,7 @@ export default function HomePage() {
         <div className="section-card-box">
           <div className="section-head">
             <span className="eyebrow">Featured Games</span>
-            <h2>What we&apos;re making</h2>
+            <InkText as="h2" base={40}>What we&apos;re making</InkText>
             <p>Free to download, free to keep, yours once you have it. Scroll through, or see everything.</p>
           </div>
           <div className="pledge-grid">
@@ -66,7 +67,7 @@ export default function HomePage() {
         <div className="panel-box">
           <div className="section-head">
             <span className="eyebrow">The Idea</span>
-            <h2>Ownership, not access</h2>
+            <InkText as="h2" base={40}>Ownership, not access</InkText>
             <p>
               Most games today are rented to you — tied to a launcher, an account,
               or a live-service switch someone else controls. We think that&apos;s backwards.
@@ -87,7 +88,7 @@ export default function HomePage() {
         <div className="panel-box">
           <div className="section-head">
             <span className="eyebrow">How we survive</span>
-            <h2>We run entirely on donations</h2>
+            <InkText as="h2" base={40}>We run entirely on donations</InkText>
             <p>
               No investors, no ad networks, no store cuts baked into a price tag.
               Just people who play our games and decide it&apos;s worth chipping in.
@@ -110,7 +111,7 @@ export default function HomePage() {
       </section>
 
       <section className="cta-band">
-        <h2>We&apos;re just getting started.</h2>
+        <InkText as="h2" base={40}>We&apos;re just getting started.</InkText>
         <p>Follow along as we build our first game and figure this out in the open.</p>
         <Link href="/games" className="btn btn-primary">See What We&apos;re Making</Link>
       </section>

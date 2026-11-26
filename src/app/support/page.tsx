@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InkText } from "@/components/InkText";
 
 export const metadata: Metadata = {
   title: "Support Us",
@@ -11,7 +12,7 @@ export default function SupportPage() {
     <>
       <section className="page-hero">
         <span className="eyebrow">Support Us</span>
-        <h1>No sales. No ads. Just you, if you want to.</h1>
+        <InkText as="h1">No sales. No ads. Just you, if you want to.</InkText>
         <p className="lede">
           Pie Time Studio doesn&apos;t make money from the games themselves — they&apos;re
           free, always. Everything we build is funded by people who decide it&apos;s
@@ -23,7 +24,7 @@ export default function SupportPage() {
         <div className="panel-box">
           <div className="section-head">
             <span className="eyebrow">Why donate</span>
-            <h2>What your support actually funds</h2>
+            <InkText as="h2" base={40}>What your support actually funds</InkText>
             <p>
               Not a purchase, not a &quot;supporter pack&quot; with bonus content locked
               behind it. Just the studio&apos;s ability to keep making free games —
@@ -69,7 +70,7 @@ export default function SupportPage() {
         <div className="panel-box">
           <div className="section-head">
             <span className="eyebrow">Where to give</span>
-            <h2>Support platforms</h2>
+            <InkText as="h2" base={40}>Support platforms</InkText>
             <p>Our home for support is Patreon. Every pie slice helps.</p>
           </div>
           <div className="patreon-cta">
